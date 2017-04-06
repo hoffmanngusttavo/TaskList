@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./basic.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="titleOfPage">
+        Tasks
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form prependId="false">
+
+            <h:messages errorClass="msg_error"/>
+
+            <h:dataTable value="#{taskControl.tasks}"
+                         rows="5"
+                         rowClasses="linhaPar,linhaImpar" 
+                         styleClass="tabelaBasica" 
+                         var="item">
+                <h:column>
+                    <f:facet name="header">
+                        Id
+                    </f:facet>
+                    #{item.taskId}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        Titulo
+                    </f:facet>
+                    #{item.taskTitulo}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        Data criação
+                    </f:facet>
+                    <h:outputText value="#{item.taskDataCriacao}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        Data edição
+                    </f:facet>
+                    <h:outputText value="#{item.taskDataEdicao}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        Data conclusão
+                    </f:facet>
+                    <h:outputText value="#{item.taskDataConclusao}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        Concluido ?
+                    </f:facet>
+                    #{item.taskStatus ? 'Sim': 'Não'}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        Ações
+                    </f:facet>
+                    
+                    <h:commandLink action="#{taskControl.doStartUpdateTask()}"
+                                   title="Alterar">
+                        <h:graphicImage value="/resources/images/editar.png"/>
+                        <f:setPropertyActionListener value="#{item}" 
+                                                     target="#{taskControl.entity}"/>
+                    </h:commandLink>
+                    
+                    <h:commandLink action="#{taskControl.doFinishRemoveTask()}"
+                                   title="Excluir"
+                                   style="margin-left: 15px;"
+                                   onclick="return confirm('Deseja excluir essa tarefa ?');">
+                        <h:graphicImage value="/resources/images/excluir.png"/>
+                        <f:setPropertyActionListener value="#{item}" 
+                                                     target="#{taskControl.entity}"/>
+                    </h:commandLink>
+                </h:column>
+            </h:dataTable>
+
+            <h:commandButton action="#{taskControl.doStartAddTask()}"
+                             value="Cadastrar Novo"/>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

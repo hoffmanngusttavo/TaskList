@@ -1,0 +1,98 @@
+.linhaPar {
+    background-color: lavender;
+}
+
+.linhaImpar {
+    background-color: antiquewhite;
+}
+
+.tabelaBasica {
+    font-size: small;
+    border-width: thin;
+    border-style: groove;
+    width: 100%;
+    text-align: center;
+}
+
+.tabelaBasica th:hover  {
+}
+
+.tabelaBasica tr:hover  {
+    background-color: #045491;
+    color: white;
+}
+
+
+.msg_erro {
+    color: red;
+    font-weight: bolder;
+    list-style-type:none;
+}
+
+.logoMenu {
+    width: 100px;
+}
+
+
+#top {
+    position: relative;
+    // background-color: #036fab;
+    color: #036fab;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+}
+
+#bottom {
+    position: relative;
+    // background-color: #c2dfef;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+    text-align: center;
+    font-size: xx-small;
+}
+
+#left {
+    float: left;
+    // background-color: #ece3a5;
+    padding: 5px;
+    width: 150px;
+}
+
+#right {
+    float: right;
+    // background-color: #ece3a5;
+    padding: 5px;
+    width: 150px;
+}
+
+.center_content {
+    position: relative;
+    // background-color: #dddddd;
+    padding: 5px;
+}
+
+.left_content {
+    //  background-color: #dddddd;
+    padding: 5px;
+    margin-left: 170px;
+}
+
+.right_content {
+    //  background-color: #dddddd;
+    padding: 5px;
+    margin: 0px 170px 0px 170px;
+}
+
+#top a:link, #top a:visited {
+    //color: white;
+    font-weight : bold;
+    text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+    color: black;
+    font-weight : bold;
+    text-decoration : underline;
+}
+
+
